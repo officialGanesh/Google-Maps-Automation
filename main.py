@@ -57,6 +57,20 @@ def search_again():
     search.click()
     sleep(10)
 
+
+# total dist and time
+
+def dist_time():
+    sleep(5)
+    total_kilometers = driver.find_element_by_xpath("/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[5]/div[2]/div/div[1]/div[1]/div[2]/div")
+    print(f"Total Distance ==> {total_kilometers.text}🔥")
+
+    reaching_time = driver.find_element_by_xpath("/html/body/jsl/div[3]/div[9]/div[8]/div/div[1]/div/div/div[5]/div[1]/div/div[2]/div[1]/div")
+    print(f"Reaching Time ==> {reaching_time.text}🔥")
+
+    speak.say(f"Total Distance is {total_kilometers.text} \n and reaching time will be {reaching_time.text}")
+    
+
 if __name__ == "__main__":
 
     Voice_message()
@@ -66,6 +80,8 @@ if __name__ == "__main__":
     starting_point()
     end_point()
     search_again()
+    dist_time()
+
 
     driver.quit()
     speak.runAndWait()
